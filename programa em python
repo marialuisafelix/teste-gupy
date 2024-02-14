@@ -1,0 +1,54 @@
+Sequência de Fibonacci:
+def fibonacci_sequence(n):
+    a, b = 0, 1
+    while b < n:
+        if b == n:
+            return True
+        a, b = b, a + b
+    return False
+
+numero = int(input("Digite um número: "))
+if fibonacci_sequence(numero):
+    print(f"O número {numero} pertence à sequência de Fibonacci.")
+else:
+    print(f"O número {numero} não pertence à sequência de Fibonacci.")
+Faturamento diário:
+import json
+
+with open('faturamento.json') as f:
+    faturamento_mensal = json.load(f)
+
+dias = len(faturamento_mensal)
+soma_faturamento = sum(faturamento_mensal.values())
+media_mensal = soma_faturamento / dias
+
+menor_valor = min(faturamento_mensal.values())
+maior_valor = max(faturamento_mensal.values())
+
+dias_acima_da_media = sum(1 for valor in faturamento_mensal.values() if valor > media_mensal)
+
+print(f"Menor valor de faturamento diário: R${menor_valor:.2f}")
+print(f"Maior valor de faturamento diário: R${maior_valor:.2f}")
+print(f"Dias com faturamento acima da média mensal: {dias_acima_da_media}")
+Percentual de representação por estado:
+faturamento_estados = {
+    'SP': 67836.43,
+    'RJ': 36678.66,
+    'MG': 29229.88,
+    'ES': 27165.48,
+    'Outros': 19849.53
+}
+
+total_mensal = sum(faturamento_estados.values())
+
+percentuais = {estado: (faturamento / total_mensal) * 100 for estado, faturamento in faturamento_estados.items()}
+
+for estado, percentual in percentuais.items():
+    print(f"{estado}: {percentual:.2f}%")
+Inversão de caracteres em uma string:
+def inverter_string(s):
+    return s[::-1]
+
+texto = input("Digite uma string: ")
+print("String original:", texto)
+print("String invertida:", inverter_string(texto))
